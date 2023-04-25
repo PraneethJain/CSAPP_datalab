@@ -205,7 +205,16 @@ int isAsciiDigit(int x) {
  *   Max ops: 16
  *   Rating: 3
  */
-int conditional(int x, int y, int z) { return 2; }
+int conditional(int x, int y, int z) {
+  x = !!x;
+  x = (x << 1) | x;
+  x = (x << 2) | x;
+  x = (x << 4) | x;
+  x = (x << 8) | x;
+  x = (x << 16) | x;
+
+  return (x & y) + (~x & z);
+}
 /*
  * isLessOrEqual - if x <= y  then return 1, else return 0
  *   Example: isLessOrEqual(4,5) = 1.
